@@ -5,10 +5,14 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const morgan = require("morgan")
 const app = express()
+const bcrypt = require("bcrypt");
+const AuthRouter = require("./controller/user.js")
+const user = require("./models/user.js")
 
 ////////////////////////
 // Connection
 ///////////////////////
+
 mongoose.connect(DATABASE_URL, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -18,21 +22,39 @@ mongoose.connection
 .on("close", () => console.log("Disconnected from mongoose"))
 .on("error", (error) => console.log(error))
 
+// ============================//
+
+//====== Schema & Model =======//
+
+const nftSchema = new mongoose.Schema ({
+    name: "",
+    image_url: "",
+    external_link: "",
+    description: "",
+    traits: "",
+    stats: ""
+},{timestamps: true})
+
+const NFT = mongoose.model("NFT", nftSchema)
+
 /////////////////////////
 // Middleware
 /////////////////////////
 app.use(cors())
 app.use(morgan("dev"))
 app.use(express.json())
-
 //////////////////////
 // Routes
 //////////////////////
+//Auth Route
+app.use("/auth", AuthRouter);
+
 // Test route
 app.get("/", (req, res) => {
     res.send("hello world");
   });
 
+  
 
 
 
