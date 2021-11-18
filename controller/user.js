@@ -1,6 +1,6 @@
 require("dotenv").config();
 const User = require("../models/user.js");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const router = express.Router();
@@ -8,7 +8,9 @@ const { SECRET } = process.env;
 
 router.post("/signup", async (req, res) => {
   try {
-    req.body.password = await bcrypt.hash(req.body.password, 10);
+    console.log("REQ.BODY BEFORE HASH", req.body)
+    req.body.password = await bcrypt.hash(req.body.password, 10); 
+    console.log("REQ.BODY AFTER HASH", req.body)
     const newUser = await User.create(req.body);
     res.json(newUser);
   } catch (error) {

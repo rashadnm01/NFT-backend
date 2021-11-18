@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const morgan = require("morgan")
 const app = express()
+const bcrypt = require("bcrypt");
 const AuthRouter = require("./controller/user.js")
 const user = require("./models/user.js")
 
@@ -42,7 +43,6 @@ const NFT = mongoose.model("NFT", nftSchema)
 app.use(cors())
 app.use(morgan("dev"))
 app.use(express.json())
-
 //////////////////////
 // Routes
 //////////////////////
