@@ -9,7 +9,7 @@ const app = express();
 const bcrypt = require("bcrypt");
 const AuthRouter = require("./routes/user.js");
 const user = require("./models/user.js");
-const collections = require("./routes/collections.js");
+const Collections = require("./routes/Collections.js");
 
 ////////////////////////
 // Connection
@@ -55,7 +55,7 @@ app.use(express.json());
 //Auth Route
 app.use("/user", AuthRouter);
 //collections route
-app.use("/collections", collections);
+app.use("/collections", Collections);
 // Test route
 app.get("/", (req, res) => {
   res.send("hello world");
