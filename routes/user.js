@@ -8,9 +8,9 @@ const { SECRET } = process.env;
 
 router.post("/signup", async (req, res) => {
   try {
-    console.log("REQ.BODY BEFORE HASH", req.body)
-    req.body.password = await bcrypt.hash(req.body.password, 10); 
-    console.log("REQ.BODY AFTER HASH", req.body)
+    console.log("REQ.BODY BEFORE HASH", req.body);
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+    console.log("REQ.BODY AFTER HASH", req.body);
     const newUser = await User.create(req.body);
     res.json(newUser);
   } catch (error) {
