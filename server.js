@@ -9,7 +9,7 @@ const app = express();
 const bcrypt = require("bcrypt");
 const AuthRouter = require("./routes/user.js");
 const user = require("./models/user.js");
-const Collections = require("./routes/Collections.js");
+const Collections = require("./routes/collections.js");
 
 ////////////////////////
 // Connection
