@@ -31,16 +31,6 @@ router.get("/by-sale-count", (req, res) => {
   getAssets();
   Collections.find({})
     .then((collections) => {
-      res.json(data.assets[1]);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-router.get("/by-sale-count2", (req, res) => {
-  getAssets();
-  Collections.find({})
-    .then((collections) => {
       res.json(collections);
     })
     .catch((error) => console.log(error));
