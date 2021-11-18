@@ -5,9 +5,11 @@ module.exports = mongoose.model(
   "collection",
   new Schema({
     name: String,
-    image_url: String,
-    external_link: String,
+    sales: Number,
+    img: String,
+    site: String,
+    slug: String,
     description: String,
-    stats: String,
+    date_created: String,
   })
 );
